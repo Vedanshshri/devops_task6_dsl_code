@@ -23,12 +23,12 @@ else
 ''')
       }
 }
-job(‘task6_DSL_job2’) {
+job(task6_DSL_job2) {
  triggers {
  upstream('task6_DSL_job1', ‘SUCCESS’)
  }
 
-job(‘task6_DSL_job3’) {
+job(task6_DSL_job3) {
  triggers {
  upstream(‘task6_DSL_job2’, ‘SUCCESS’)
  }
@@ -48,7 +48,7 @@ else
 fi  ''')
   }
 }
-job("task6_DSL_job4") {
+job(task6_DSL_job4) {
   description ("It will test if pod is running else send a mail")
   
   triggers {
@@ -74,7 +74,7 @@ fi
   }
 }  
 }
-buildPipelineView('task6_DSL_BPV') {
+buildPipelineView(task6_DSL_BPV) {
   filterBuildQueue(true)
   filterExecutors(false)
   title('task6_DSL_BPV')
