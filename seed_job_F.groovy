@@ -72,6 +72,7 @@ exit 1
 fi
 ''')
   }
+}      
 buildPipelineView('task6_DSL_BPV') {
   filterBuildQueue(true)
   filterExecutors(false)
