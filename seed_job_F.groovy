@@ -1,7 +1,7 @@
 job("task6_DSL_job1"){
         description("this job will copy the file in you os version and push image to docker hub")
         scm {
-                 github('https://github.com/Vedanshshri/devops_task6_code_repo.git' , 'master')
+                github('https://github.com/Vedanshshri/devops_task6_code_repo.git' , 'master')
              }
         triggers {
                 scm("* * * * *")
