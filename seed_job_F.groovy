@@ -1,4 +1,4 @@
-job(task6_DSL_job1){
+job("task6_DSL_job1"){
         description("this job will copy the file in you os version and push image to docker hub")
         scm {
                  github('https://github.com/Vedanshshri/devops_task6_code_repo.git' , 'master')
@@ -23,14 +23,14 @@ else
 ''')
       }
 }
-job(task6_DSL_job2) {
+job("task6_DSL_job2") {
  triggers {
- upstream(task6_DSL_job1, SUCCESS)
+ upstream('task6_DSL_job1', 'SUCCESS')
  }
 
-job(task6_DSL_job3) {
+job("task6_DSL_job3") {
  triggers {
- upstream(task6_DSL_job2, SUCCESS)
+ upstream('task6_DSL_job2', 'SUCCESS')
  }
  steps {
  shell('''
@@ -48,11 +48,11 @@ else
 fi  ''')
   }
 }
-job(task6_DSL_job4) {
+job("task6_DSL_job4") {
   description ("It will test if pod is running else send a mail")
   
   triggers {
-    upstream(task6_DSL_job3, SUCCESS)
+    upstream('task6_DSL_job2', 'SUCCESS')
   }
   steps {
     shell('''
@@ -72,14 +72,13 @@ exit 1
 fi
 ''')
   }
-}  
 }
-buildPipelineView(task6_DSL_BPV) {
+buildPipelineView("task6_DSL_BPV") {
   filterBuildQueue(true)
   filterExecutors(false)
   title('task6_DSL_BPV')
   displayedBuilds(1)
-  selectedJob(task6_DSL_job1)
+  selectedJob('task6_DSL_job1')
   alwaysAllowManualTrigger(false)
   showPipelineParameters(true)
   refreshFrequency(1)
