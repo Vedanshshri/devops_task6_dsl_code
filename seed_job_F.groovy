@@ -73,6 +73,8 @@ fi
 ''')
   }
 }
+
+
 buildPipelineView("task6_DSL_BPV") {
   filterBuildQueue(true)
   filterExecutors(false)
@@ -82,4 +84,5 @@ buildPipelineView("task6_DSL_BPV") {
   alwaysAllowManualTrigger(false)
   showPipelineParameters(true)
   refreshFrequency(1)
+}
 }
