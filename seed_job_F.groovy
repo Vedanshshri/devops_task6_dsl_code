@@ -25,12 +25,12 @@ else
 }
 job(task6_DSL_job2) {
  triggers {
- upstream('task6_DSL_job1', ‘SUCCESS’)
+ upstream(task6_DSL_job1, ‘SUCCESS’)
  }
 
 job(task6_DSL_job3) {
  triggers {
- upstream(‘task6_DSL_job2’, ‘SUCCESS’)
+ upstream(task6_DSL_job2, ‘SUCCESS’)
  }
  steps {
  shell('''
@@ -52,7 +52,7 @@ job(task6_DSL_job4) {
   description ("It will test if pod is running else send a mail")
   
   triggers {
-    upstream('task6_DSL_job2', 'SUCCESS')
+    upstream(task6_DSL_job3, 'SUCCESS')
   }
   steps {
     shell('''
@@ -79,7 +79,7 @@ buildPipelineView(task6_DSL_BPV) {
   filterExecutors(false)
   title('task6_DSL_BPV')
   displayedBuilds(1)
-  selectedJob('task6_DSL_job1')
+  selectedJob(task6_DSL_job1)
   alwaysAllowManualTrigger(false)
   showPipelineParameters(true)
   refreshFrequency(1)
